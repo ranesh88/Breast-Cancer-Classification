@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction Model</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color:cyan;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            background-color: blue;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+                  background-color:green
+                  border: none;
+                  color: blue;
+                  padding: 5px 5px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 20px;
+}
+        .result {
+            margin-top: 120px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+      <h1 class="text-center">Breast Cancer Prediction Model</h1>
+
+      <form action="/predict" method="post">
+
+        <div class="row">
+
+          <div class="form-group col-md-6">
+            <label for="Pregnancies"> Enter Mean Radius</label>
+            <input type="text" class="form-control" id="mean_radius" name="mean_radius",step="any">
+          </div>
+           <div class="form-group col-md-6">
+            <label for="Glucose">Enter Mean Texture</label>
+            <input type="text" class="form-control" id="mean_texture" name="mean_texture",step="any" >
+          </div>
+           <div class="form-group col-md-6">
+            <label for="BloodPressure">Enter Mean Perimeter</label>
+            <input type="text" class="form-control" id="mean_perimeter" name="mean_perimeter",step="any">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="SkinThickness">Enter Mean Area</label>
+            <input type="text" class="form-control" id="mean_area" name="mean_area",step="any" >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="mean_smoothness">Enter Mean Smoothness</label>
+            <input type="text" class="form-control" id="mean_smoothness" name="mean_smoothness",step="any" >
+          </div>
+
+          <div>
+
+      </form>
+
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg" style="background-color:blue;margin-left:auto;margin-right:auto;display:block;margin-top:5%;margin-bottom:5%">Prediction</button>
+
+          {% if prediction %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>The prediction for Breast Cancer is: <strong>{{ prediction }}</strong></p>
+
+        </div>
+
+        {% endif %}
+    </div>
+
+  </body>
+</html>
